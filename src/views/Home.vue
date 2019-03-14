@@ -1,14 +1,20 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <v-container fill-height>
+      <v-layout align-center>
+        <AboutCard/>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import AboutCard from "@/components/AboutCard"; // @ is an alias to /src
 
 @Component({
   components: {
-    // HelloWorld
+    AboutCard
   }
 })
 export default class Home extends Vue {}
