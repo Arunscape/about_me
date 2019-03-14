@@ -16,9 +16,11 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
+    "css-loader": "^2.1.1",
     "fibers": "^3.1.1",
     "sass": "^1.17.2",
     "sass-loader": "^7.1.0",
