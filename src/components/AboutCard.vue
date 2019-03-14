@@ -13,14 +13,6 @@
 
       <v-card-actions>
         <!-- TODO make buttons wrap on smaller screens -->
-        <v-btn flat>
-          <v-icon class="mr-2">far fa-address-card</v-icon>
-          <span>Résumé</span>
-        </v-btn>
-        <v-btn flat>
-          <v-icon class="mr-2">fas fa-code</v-icon>
-          <span>Projects</span>
-        </v-btn>
         <v-btn flat icon>
           <v-icon>fab fa-github</v-icon>
         </v-btn>
@@ -29,6 +21,16 @@
         </v-btn>
         <v-btn flat icon>
           <v-icon>far fa-envelope</v-icon>
+        </v-btn>
+        <!-- TODO properly format -->
+        <v-spacer></v-spacer>
+        <v-btn flat>
+          <v-icon class="mr-2">far fa-file-alt</v-icon>
+          <span>Résumé</span>
+        </v-btn>
+        <v-btn flat>
+          <v-icon class="mr-2">far fa-folder-open</v-icon>
+          <span>Projects</span>
         </v-btn>
       </v-card-actions>
     </v-card>
