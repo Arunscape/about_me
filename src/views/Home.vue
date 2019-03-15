@@ -1,6 +1,6 @@
 <template>
   <v-container fill-height>
-    <v-layout align-center>
+    <v-layout align-center justify-center>
       <AboutCard/>
     </v-layout>
   </v-container>
