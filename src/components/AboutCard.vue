@@ -1,21 +1,21 @@
 <template>
-  <!-- <div class="AboutCard"> -->
-  <!-- <v-flex xs12 sm6 offset-sm3> -->
   <v-card>
     <v-container grid-list-md>
       <v-layout row>
-        <v-flex xs3 text-xs-center>
-          <v-layout column>
+        <!-- avatar + social buttons -->
+        <v-flex xs3>
+          <v-layout column justify-center text-xs-center>
             <v-flex>
-              <v-avatar size="128" align-center justify-center>
+              <!-- size 64 looks good on iphone, 128 for desktop -->
+              <v-avatar size="128" align-center>
                 <v-img src="https://avatars1.githubusercontent.com/u/8227297"></v-img>
               </v-avatar>
             </v-flex>
-            <v-flex>
-              <v-btn flat icon>
+            <v-flex mt-4>
+              <v-btn flat icon @click="openLink('github')">
                 <v-icon>fab fa-github</v-icon>
               </v-btn>
-              <v-btn flat icon>
+              <v-btn flat icon @click="openLink('linkedin')">
                 <v-icon>fab fa-linkedin-in</v-icon>
               </v-btn>
               <v-btn flat icon>
@@ -24,11 +24,14 @@
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex xs9 text-xs-center text-xs-bottom>
-          <v-layout column justify-space-between fill-height>
-            <v-flex>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, reprehenderit nostrum modi officiis minus aliquid inventore voluptatem quis? Cum velit sed dignissimos ipsa adipisci reprehenderit accusamus! Obcaecati mollitia esse cumque.</v-flex>
-            <v-spacer/>
-            <v-flex>
+        <!-- bio + link to github -->
+        <v-flex xs9>
+          <v-layout column mt-4>
+            <v-flex xs9 text-xs-center>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum unde itaque laudantium iste iure, natus ea dolor corrupti excepturi. Neque impedit illum tempora eius similique earum corporis sequi, reiciendis maxime.</p>
+            </v-flex>
+
+            <v-flex text-xs-center xs3>
               <v-btn flat>
                 <v-icon class="mr-2">far fa-file-alt</v-icon>
                 <span>Résumé</span>
@@ -43,14 +46,20 @@
       </v-layout>
     </v-container>
   </v-card>
-  <!-- </v-flex> -->
-  <!-- </div> -->
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      github: "https://github.com/Arunscape",
+      linkedin: "https://www.linkedin.com/in/arun-woosaree/"
+    };
+  },
+  methods: {
+    openLink(website) {
+      window.open(this[website], "_blank");
+    }
   }
 };
 </script>
