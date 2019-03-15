@@ -1,14 +1,12 @@
 <template>
-  <div class="home">
-    <v-container fill-height>
-      <v-layout align-center>
-        <AboutCard/>
-      </v-layout>
-    </v-container>
-  </div>
+  <v-container fill-height>
+    <v-layout align-center>
+      <AboutCard/>
+    </v-layout>
+  </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import { Component, Vue } from "vue-property-decorator";
 import AboutCard from "@/components/AboutCard"; // @ is an alias to /src
 
