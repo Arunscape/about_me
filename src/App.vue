@@ -3,7 +3,9 @@
     <NavBar/>
     <!-- mx-4 is left and right margin -->
     <v-content>
-      <router-view/>
+      <transition>
+        <router-view/>
+      </transition>
     </v-content>
   </v-app>
 </template>
