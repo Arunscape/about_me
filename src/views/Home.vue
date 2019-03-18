@@ -7,13 +7,12 @@
 </template>
 
 <script>
-import { Component, Vue } from "vue-property-decorator";
 import AboutCard from "@/components/AboutCard"; // @ is an alias to /src
 
-@Component({
+export default {
   components: {
     AboutCard
   }
-})
-export default class Home extends Vue {}
+};
 </script>
+
