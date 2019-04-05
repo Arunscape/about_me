@@ -32,9 +32,9 @@
             </v-flex>
 
             <v-flex text-xs-center xs3>
-              <v-btn flat @click="openLink('resume')">
+              <!-- <v-btn flat @click="$router.push('resume')"> -->
+              <v-btn flat to="/resume">
                 <v-icon class="mr-2">far fa-file-alt</v-icon>
-                <!-- todo, create html page, fix up pdf -->
                 <span>Résumé</span>
               </v-btn>
               <v-btn flat @click="openLink('projects')">
@@ -57,8 +57,8 @@ export default {
       github: "https://github.com/Arunscape",
       linkedin: "https://www.linkedin.com/in/arun-woosaree/",
       email: "mailto:arun@woosaree.xyz",
-      resume:
-        "https://nbviewer.jupyter.org/github/Arunscape/LaTeX-Stuff/blob/master/resume/coop/resume.pdf",
+      // resume:
+      //   "https://nbviewer.jupyter.org/github/Arunscape/LaTeX-Stuff/blob/master/resume/coop/resume.pdf",
       projects: "https://github.com/Arunscape?tab=repositories",
       windowSize: {
         x: 0,
