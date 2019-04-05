@@ -27,8 +27,9 @@
         <!-- bio + link to github -->
         <v-flex xs9>
           <v-layout column mt-4>
-            <v-flex xs9 text-xs-center>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum unde itaque laudantium iste iure, natus ea dolor corrupti excepturi. Neque impedit illum tempora eius similique earum corporis sequi, reiciendis maxime.</p>
+            <v-flex xs9 text-xs-center mb-4 ml-4>
+              <h3>Computer Software Engineering Co-Op Student</h3>
+              <h4>University of Alberta</h4>
             </v-flex>
 
             <v-flex text-xs-center xs3>
@@ -37,7 +38,7 @@
                 <v-icon class="mr-2">far fa-file-alt</v-icon>
                 <span>Résumé</span>
               </v-btn>
-              <v-btn flat @click="openLink('projects')">
+              <v-btn flat to="/projects">
                 <!-- todo, create Projects page -->
                 <v-icon class="mr-2">far fa-folder-open</v-icon>
                 <span>Projects</span>

@@ -23,6 +23,11 @@ export default new Router({
       path: '/resume',
       name: 'resume',
       component: () => import('./views/Resume.vue')
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: () => import('./views/Projects.vue')
     }
   ]
 })

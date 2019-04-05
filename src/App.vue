@@ -5,6 +5,7 @@
     <v-content>
       <transition>
         <router-view/>
+        <!-- :style="{ backgroundImage: `url('https://raw.githubusercontent.com/Arunscape/About-Me/master/assets/hackathon.jpg')`, fill }" -->
       </transition>
     </v-content>
   </v-app>

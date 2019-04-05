@@ -1,11 +1,18 @@
 <template>
   <nav>
     <v-toolbar flat app>
+      <!-- <v-tooltip bottom> -->
+      <!-- <template v-slot:activator="{ on }"> -->
+      <!-- <v-toolbar-title :v-on="$route.name != 'resume' ? 'on' : 'on'"> -->
       <router-link to="/" tag="hideunderline">
         <v-toolbar-title>
           <span class="font-weight-light grey--text">About Me</span>
         </v-toolbar-title>
       </router-link>
+
+      <!-- </template> -->
+      <!-- <span>Return to the home page</span> -->
+      <!-- </v-tooltip> -->
 
       <v-spacer/>
 
