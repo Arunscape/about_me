@@ -4,6 +4,10 @@ import {Button} from 'antd'
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+// const AboutPage = React.lazy(() => import('./pages/AboutPage/AboutPage'));
+
+import AboutPage from './pages/AboutPage/AboutPage'
+
 
 const App = () => {
   return (
@@ -12,14 +16,11 @@ const App = () => {
         Header
       </h2>
       <Router>       
-          <Route path="/" exact component={Index} />
-          <Route path="/products/:id" component={Product} />
+          <Route path="/" exact component={AboutPage} />
       </Router>
     </>
   );
 }
 
 
-const Index = () => <> <p>hello</p> </>
-const Product = () => <> <p>product</p> </>
 export default App;
