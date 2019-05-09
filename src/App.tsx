@@ -1,15 +1,11 @@
 import React, { Suspense } from 'react';
-// import Button from 'antd/lib/button';
 import {Button} from 'antd'
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { tsExpressionWithTypeArguments } from '@babel/types';
 
 
 const AboutPage = React.lazy(() => import('./pages/AboutPage/AboutPage'));
 const Header = React.lazy(()=> import('./components/Header/Header'));
-
-// import AboutPage from './pages/AboutPage/AboutPage'
 
 const externalRedirect = (path:string, url:string) => (
   <Route path={path} exact component={()=>{
@@ -25,14 +21,7 @@ const redirectRoutes = [
   ["/resume", "https://github.com/Arunscape"],
 ]
 
-const test = (x:string) => <div>{x}</div>
-const idk = [
-  ["/a", "google.ca"],
-  ["/b", "gmail.com"],
-  ["/c", "youtube.com"],
-]
-
-const App = () => {
+export default () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Header/>>
@@ -44,6 +33,3 @@ const App = () => {
     </Suspense>
   );
 }
-
-
-export default App;

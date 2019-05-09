@@ -18,9 +18,6 @@ const AboutCard = () =>{
 
   return (
     <>
-      {/* <Switch checked={!loading} onChange={this.onChange} /> */}
-
-
       <Card 
         style={{ width: 350 }} 
         loading={false}
