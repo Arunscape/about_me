@@ -1,7 +1,9 @@
-import React from 'react';
-import AboutCard from '../../components/AboutCard/AboutCard'
+import React, { Suspense } from 'react';
+// import AboutCard from '../../components/AboutCard/AboutCard'
+const AboutCard = React.lazy(()=>import('../../components/AboutCard/AboutCard'))
 
-const AboutPage = () => {
+
+export default () => {
 
     const center = {
         display: 'flex',
@@ -11,10 +13,13 @@ const AboutPage = () => {
     }
 
     return (
+        
+
         <div style={center}>
+        <Suspense fallback={<div>Loading...</div>}>
+        
             <AboutCard />
+        </Suspense>
         </div>
     )
 }
-
-export default AboutPage;

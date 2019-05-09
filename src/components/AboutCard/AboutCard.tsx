@@ -14,7 +14,7 @@ const iconWithLink = (icon:string, link:string) => (
 )
 
 
-const AboutCard = () =>{
+export default () =>{
 
   return (
     <>
@@ -40,5 +40,3 @@ const AboutCard = () =>{
 
     );
 }
-
-export default AboutCard;

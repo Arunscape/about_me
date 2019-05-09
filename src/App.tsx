@@ -27,7 +27,7 @@ export default () => {
       <Header/>>
       <Router>       
           <Route path="/" exact component={AboutPage} />
-          <Route path="/resume" exact component={()=><div>TODO</div>}/>
+          <Route path="/resume" exact component={()=>(<div>TODO</div>)}/>
           {redirectRoutes.map((x)=>externalRedirect(x[0],x[1]))}
       </Router>
     </Suspense>
