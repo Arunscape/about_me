@@ -1,12 +1,14 @@
 import React from 'react'
 
 
-export default () => {
+const Resume: React.FC = () => {
 
 
-    return (
-        <>
-        <div>#TODO</div>
-        </>
-      );
+  return (
+    <>
+      <div>#TODO</div>
+    </>
+  );
 }
+
+export default Resume;

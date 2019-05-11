@@ -1,9 +1,13 @@
 import React from 'react'
 
-export default () => (
+
+
+const AboutCard: React.FC = () => (
 
     <>
 
 
     </>
 )
+
+export default AboutCard;
