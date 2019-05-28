@@ -9,3 +9,5 @@ const AboutCard: React.FC = () => {
         </>
     )
 }
+
+export default AboutCard
