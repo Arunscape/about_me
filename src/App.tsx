@@ -20,11 +20,11 @@ const redirectRoutes = [
   // ["/resume", "https://github.com/Arunscape"],
 ]
 
-export default () => {
+const App: React.FC =  () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Header />>
       <Router>
+      <Header />>
         <Route path="/" exact component={AboutPage} />
         <Route path="/resume" exact component={() => (<div>TODO</div>)} />
         {redirectRoutes.map((x) => externalRedirect(x[0], x[1]))}
@@ -32,3 +32,5 @@ export default () => {
     </Suspense>
   );
 }
+
+export default App;
