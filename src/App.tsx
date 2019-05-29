@@ -19,7 +19,6 @@ const redirectRoutes = [
   ["/github", "https://github.com/Arunscape"],
   ["/linkedin", "https://linkedin.com/in/arun-woosaree"],
   ["/email", "mailto:arun@woosaree.xyz"],
-  // ["/resume", "https://github.com/Arunscape"],
 ]
 
 const App: React.FC =  () => {

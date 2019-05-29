@@ -14,6 +14,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Tooltip from '@material-ui/core/Tooltip';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 import GithubCircle from 'mdi-material-ui/GithubCircle'
@@ -93,15 +95,28 @@ const AboutCard = () => {
         </Typography>
       </CardContent> */}
       <CardActions disableSpacing>
+        
+        {/* // todo refactor */}
+
+        <Tooltip disableFocusListener title="GitHub">
         <IconButton aria-label="Github" href="/github">
           <GithubCircle/>
         </IconButton>
+        </Tooltip>
+        
+        <Tooltip disableFocusListener title="Linkedin">
         <IconButton aria-label="Linkedin" href="/linkedin">
           <Linkedin />
         </IconButton>
+        </Tooltip>
+
+        <Tooltip disableFocusListener title="e-mail">
         <IconButton aria-label="Email" href="/email">
             <At />
         </IconButton>
+        </Tooltip>
+
+        <Tooltip disableFocusListener title="Random Joke!">
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -112,6 +127,7 @@ const AboutCard = () => {
         >
           <ExpandMoreIcon />
         </IconButton>
+        </Tooltip>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
