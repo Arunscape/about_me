@@ -15,8 +15,21 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+
+import GithubCircle from 'mdi-material-ui/GithubCircle'
+import Linkedin from 'mdi-material-ui/Linkedin'
+import At from 'mdi-material-ui/At'
+
 const GITHUB_AVATAR="https://avatars0.githubusercontent.com/u/8227297"
 const JOKE_API="https://sv443.ddns.net/jokeapi/category/Programming"
+interface jokeapiResponse{
+    category: string,
+    type: string,
+    joke?: string,
+    setup?: string,
+    delivery?: string,
+    id: number,
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,13 +62,13 @@ const AboutCard = () => {
   const [expanded, setExpanded] = React.useState(false);
 
 
-  const [joke, setJoke] = React.useState(null);
+//   const [joke, setJoke] = React.useState(null);
+  const [joke, setJoke] = React.useState<jokeapiResponse | null>(null)
   React.useEffect( ()=>{
       fetch(JOKE_API)
         .then(res=> res.json())
         .then(data => setJoke(data))
   }, [])
-  
 
   return (
     <Card className={classes.card}>
@@ -76,16 +89,18 @@ const AboutCard = () => {
       />
       {/* <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          Lorem ipsum do lor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </Typography>
       </CardContent> */}
       <CardActions disableSpacing>
-        <IconButton aria-label="Add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="Github" href="/github">
+          <GithubCircle/>
         </IconButton>
-        <IconButton aria-label="Share">
-          <ShareIcon />
+        <IconButton aria-label="Linkedin" href="/linkedin">
+          <Linkedin />
+        </IconButton>
+        <IconButton aria-label="Email" href="/email">
+            <At />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
@@ -100,9 +115,26 @@ const AboutCard = () => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-              {JSON.stringify(joke)}
-          </Typography>
+            {
+                joke && joke.joke && (
+                    <Typography>
+                        {joke.joke}
+                    </Typography>
+                )
+            }
+            {
+                joke && joke.setup && joke.delivery && (
+                   <>
+                        <Typography paragraph>
+                            {joke.setup}
+                        </Typography>
+
+                        <Typography>
+                            {joke.delivery}
+                        </Typography> 
+                    </>                       
+                )
+            }
         </CardContent>
       </Collapse>
     </Card>

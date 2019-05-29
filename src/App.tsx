@@ -10,7 +10,9 @@ const externalRedirect = (path: string, url: string) => (
   <Route path={path} exact component={() => {
     window.location.replace(url);
     return null
-  }} />
+  }} 
+  key={path}
+  />
 );
 
 const redirectRoutes = [
@@ -24,7 +26,7 @@ const App: React.FC =  () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Router>
-      <Header />>
+      <Header />
         <Route path="/" exact component={AboutPage} />
         <Route path="/resume" exact component={() => (<div>TODO</div>)} />
         {redirectRoutes.map((x) => externalRedirect(x[0], x[1]))}
