@@ -10,11 +10,10 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const GITHUB_AVATAR="https://avatars0.githubusercontent.com/u/8227297"
 const JOKE_API="https://sv443.ddns.net/jokeapi/category/Programming"
@@ -48,11 +47,15 @@ const useStyles = makeStyles((theme: Theme) =>
 const AboutCard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  
 
-  function handleExpandClick() {
-    setExpanded(!expanded);
-  }
+
+  const [joke, setJoke] = React.useState(null);
+  React.useEffect( ()=>{
+      fetch(JOKE_API)
+        .then(res=> res.json())
+        .then(data => setJoke(data))
+  }, [])
+  
 
   return (
     <Card className={classes.card}>
@@ -88,7 +91,7 @@ const AboutCard = () => {
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
           })}
-          onClick={handleExpandClick}
+          onClick={() => setExpanded(!expanded)}
           aria-expanded={expanded}
           aria-label="Show more"
         >
@@ -98,7 +101,7 @@ const AboutCard = () => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-              {fetch(JOKE_API).then(res => res)}
+              {JSON.stringify(joke)}
           </Typography>
         </CardContent>
       </Collapse>
