@@ -3,35 +3,30 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Tooltip from '@material-ui/core/Tooltip';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+// import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+
 
 
 import GithubCircle from 'mdi-material-ui/GithubCircle'
 import Linkedin from 'mdi-material-ui/Linkedin'
 import At from 'mdi-material-ui/At'
+import Coffee from 'mdi-material-ui/Coffee'
+// import CoffeeOutline from 'mdi-material-ui/CoffeeOutline'
+import ClipboardTextOutline from 'mdi-material-ui/ClipboardTextOutline'
 
 const GITHUB_AVATAR="https://avatars0.githubusercontent.com/u/8227297"
-const JOKE_API="https://sv443.ddns.net/jokeapi/category/Programming"
-interface jokeapiResponse{
-    category: string,
-    type: string,
-    joke?: string,
-    setup?: string,
-    delivery?: string,
-    id: number,
-}
+const JOKE_API="https://sv443.net/jokeapi/category/Programming"
+const JOKE_API_BACKUP = "https://sv443.ddns.net/jokeapi/category/Programming"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,17 +54,35 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+const openNewTab = (url: string) => window.open(url, '_blank')
+
 const AboutCard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
 
-//   const [joke, setJoke] = React.useState(null);
+  interface jokeapiResponse{
+    category: string,
+    type: string,
+    joke?: string,
+    setup?: string,
+    delivery?: string,
+    id: number,
+  }
   const [joke, setJoke] = React.useState<jokeapiResponse | null>(null)
   React.useEffect( ()=>{
-      fetch(JOKE_API)
+
+      const getJoke = (url: string) => 
+      fetch(url)
         .then(res=> res.json())
         .then(data => setJoke(data))
+
+      getJoke(JOKE_API)
+      if (!joke){
+        getJoke(JOKE_API_BACKUP)
+      }
+      
+      
   }, [])
 
   return (
@@ -99,34 +112,46 @@ const AboutCard = () => {
         {/* // todo refactor */}
 
         <Tooltip disableFocusListener title="GitHub">
-        <IconButton aria-label="Github" href="/github">
-          <GithubCircle/>
-        </IconButton>
+          <IconButton aria-label="Github" onClick={()=> openNewTab('/github')}>
+            <GithubCircle/>
+          </IconButton>
         </Tooltip>
         
         <Tooltip disableFocusListener title="Linkedin">
-        <IconButton aria-label="Linkedin" href="/linkedin">
-          <Linkedin />
-        </IconButton>
+          <IconButton aria-label="Linkedin" onClick={()=> openNewTab('/linkedin')}>
+            <Linkedin />
+          </IconButton>
         </Tooltip>
 
         <Tooltip disableFocusListener title="e-mail">
-        <IconButton aria-label="Email" href="/email">
-            <At />
-        </IconButton>
+          <IconButton aria-label="Email" onClick={()=> openNewTab('/email')}>
+              <At />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip disableFocusListener title="Résumé">
+          <IconButton aria-label="Resume" onClick={()=> openNewTab('/resume')}>
+              <ClipboardTextOutline />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip disableFocusListener title="Projects">
+          <IconButton aria-label="Other Projects" onClick={()=> openNewTab('/projects')}>
+              <Coffee />
+          </IconButton>
         </Tooltip>
 
         <Tooltip disableFocusListener title="Random Joke!">
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={() => setExpanded(!expanded)}
-          aria-expanded={expanded}
-          aria-label="Show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+            aria-label="Show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
         </Tooltip>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -151,6 +176,7 @@ const AboutCard = () => {
                     </>                       
                 )
             }
+            { !joke && <div>Loading Joke...</div> }
         </CardContent>
       </Collapse>
     </Card>

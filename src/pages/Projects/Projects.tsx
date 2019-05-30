@@ -1,3 +1,13 @@
 import React from 'react';
 
-export default () => <> </>
+const Projects: React.FC = () => {
+
+
+    return (
+        <div>
+            #TODO
+        </div>
+    )
+}
+
+export default Projects;

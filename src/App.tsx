@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const AboutPage = React.lazy(() => import('./pages/AboutPage/AboutPage'));
 const Header = React.lazy(() => import('./components/Header/Header'));
+const Resume = React.lazy(() => import('./pages/Resume/Resume'));
+const Projects = React.lazy(() => import('./pages/Projects/Projects'));
 
 const externalRedirect = (path: string, url: string) => (
   <Route path={path} exact component={() => {
@@ -27,7 +29,8 @@ const App: React.FC =  () => {
       <Router>
       <Header />
         <Route path="/" exact component={AboutPage} />
-        <Route path="/resume" exact component={() => (<div>TODO</div>)} />
+        <Route path="/resume" exact component={Resume} />
+        <Route path="/projects" exact component={Projects} />
         {redirectRoutes.map((x) => externalRedirect(x[0], x[1]))}
       </Router>
     </Suspense>
