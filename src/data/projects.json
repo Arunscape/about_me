@@ -47,7 +47,7 @@
         "title": "Rezz Goggles",
         "githuburl": "https://github.com/Arunscape/Rezz-Goggles",
         "description": "I wanted an excuse to play with my Arduinos, and LED glasses look cool. This one is a work in progress.",
-        "previewimage": "https://pbs.twimg.com/media/DZZvvgZUMAAbX_y.jpg",
+        "previewimage": "https://raw.githubusercontent.com/Arunscape/Rezz-Goggles/master/rezz.jpg",
         "wip": true
         
     }
