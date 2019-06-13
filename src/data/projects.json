@@ -14,10 +14,17 @@
     {
         "title": "Arduino Chess",
         "githuburl": "https://github.com/bojotamara/arduino-chess-game",
-        "description": "",
+        "description": "Player vs. Player implementation of Chess, on the Arduino",
         "previewimage": "https://raw.githubusercontent.com/bojotamara/arduino-chess-game/master/fritzing_files/arduinochess_bb.png"
         
     },
+
+    {
+        "title": "ATB 101 Project",
+        "demourl": "https://www.atb.com/learn/articles/Pages/atb-101-students-tackle-business-challenges.aspx",
+        "description": "Winning team for the \"Capstone Project\". It is a case competition-like format, but it lasts 4 months and each team of 10 tackled differend problems.",
+        "previewimage": "https://www.atb.com/SiteCollectionImages/Articles/Learn/full-atb-101-aug2018.jpg"
+    }
 
     {
         "title": "Arch Linux Install Script",
