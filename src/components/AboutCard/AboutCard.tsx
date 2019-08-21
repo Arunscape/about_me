@@ -23,9 +23,10 @@ import At from 'mdi-material-ui/At'
 import Coffee from 'mdi-material-ui/Coffee'
 // import CoffeeOutline from 'mdi-material-ui/CoffeeOutline'
 import ClipboardTextOutline from 'mdi-material-ui/ClipboardTextOutline'
+import useReactRouter from 'use-react-router';
 
-const GITHUB_AVATAR="https://avatars0.githubusercontent.com/u/8227297"
-const JOKE_API="https://sv443.net/jokeapi/category/Programming"
+const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
+const JOKE_API = "https://sv443.net/jokeapi/category/Programming"
 const JOKE_API_BACKUP = "https://sv443.ddns.net/jokeapi/category/Programming"
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 400,
     },
     title: {
-        fontSize: 20,
+      fontSize: 20,
     },
     expand: {
       transform: 'rotate(0deg)',
@@ -47,9 +48,9 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     avatar: {
-    //   backgroundColor: red[500],
-    width: 80, 
-    height: 80
+      //   backgroundColor: red[500],
+      width: 80,
+      height: 80
     },
   }),
 );
@@ -60,8 +61,10 @@ const AboutCard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
+  const { history } = useReactRouter();
 
-  interface jokeapiResponse{
+
+  interface jokeapiResponse {
     category: string,
     type: string,
     joke?: string,
@@ -70,29 +73,29 @@ const AboutCard = () => {
     id: number,
   }
   const [joke, setJoke] = React.useState<jokeapiResponse | null>(null)
-  React.useEffect( ()=>{
+  React.useEffect(() => {
 
-      const getJoke = (url: string) => 
+    const getJoke = (url: string) =>
       fetch(url)
-        .then(res=> res.json())
+        .then(res => res.json())
         .then(data => setJoke(data))
 
-      getJoke(JOKE_API)
-      if (!joke){
-        getJoke(JOKE_API_BACKUP)
-      }
-      
-      
+    getJoke(JOKE_API)
+    if (!joke) {
+      getJoke(JOKE_API_BACKUP)
+    }
+
+
   }, [])
 
   return (
     <Card className={classes.card}>
       <CardHeader
         classes={{
-            title: classes.title
+          title: classes.title
         }}
         avatar={
-          <Avatar className={classes.avatar} src={GITHUB_AVATAR}/>
+          <Avatar className={classes.avatar} src={GITHUB_AVATAR} />
         }
         // action={
         //   <IconButton>
@@ -108,36 +111,36 @@ const AboutCard = () => {
         </Typography>
       </CardContent> */}
       <CardActions disableSpacing>
-        
+
         {/* // todo refactor */}
 
         <Tooltip disableFocusListener title="GitHub">
-          <IconButton aria-label="Github" onClick={()=> openNewTab('/github')}>
-            <GithubCircle/>
+          <IconButton aria-label="Github" onClick={() => openNewTab('/github')}>
+            <GithubCircle />
           </IconButton>
         </Tooltip>
-        
+
         <Tooltip disableFocusListener title="Linkedin">
-          <IconButton aria-label="Linkedin" onClick={()=> openNewTab('/linkedin')}>
+          <IconButton aria-label="Linkedin" onClick={() => openNewTab('/linkedin')}>
             <Linkedin />
           </IconButton>
         </Tooltip>
 
         <Tooltip disableFocusListener title="e-mail">
-          <IconButton aria-label="Email" onClick={()=> openNewTab('/email')}>
-              <At />
+          <IconButton aria-label="Email" onClick={() => openNewTab('/email')}>
+            <At />
           </IconButton>
         </Tooltip>
 
         <Tooltip disableFocusListener title="Résumé">
-          <IconButton aria-label="Resume" onClick={()=> openNewTab('/resume')}>
-              <ClipboardTextOutline />
+          <IconButton aria-label="Resume" onClick={() => history.push('/resume')}>
+            <ClipboardTextOutline />
           </IconButton>
         </Tooltip>
 
         <Tooltip disableFocusListener title="Projects">
-          <IconButton aria-label="Other Projects" onClick={()=> openNewTab('/projects')}>
-              <Coffee />
+          <IconButton aria-label="Other Projects" onClick={() => history.push('/projects')}>
+            <Coffee />
           </IconButton>
         </Tooltip>
 
@@ -156,27 +159,27 @@ const AboutCard = () => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-            {
-                joke && joke.joke && (
-                    <Typography>
-                        {joke.joke}
-                    </Typography>
-                )
-            }
-            {
-                joke && joke.setup && joke.delivery && (
-                   <>
-                        <Typography paragraph>
-                            {joke.setup}
-                        </Typography>
+          {
+            joke && joke.joke && (
+              <Typography>
+                {joke.joke}
+              </Typography>
+            )
+          }
+          {
+            joke && joke.setup && joke.delivery && (
+              <>
+                <Typography paragraph>
+                  {joke.setup}
+                </Typography>
 
-                        <Typography>
-                            {joke.delivery}
-                        </Typography> 
-                    </>                       
-                )
-            }
-            { !joke && <div>Loading Joke...</div> }
+                <Typography>
+                  {joke.delivery}
+                </Typography>
+              </>
+            )
+          }
+          {!joke && <div>Loading Joke...</div>}
         </CardContent>
       </Collapse>
     </Card>
