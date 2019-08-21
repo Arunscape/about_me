@@ -1,5 +1,12 @@
-import React,{ useRef } from 'react'
-import { usePdf } from 'react-pdf-js';
+import React, { useState, useEffect } from 'react'
+import { Document, Page } from 'react-pdf';
+
+
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+// @ts-ignore
+import { pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 
 // const PDF_URL = 'https://github.com/Arunscape/resume/raw/master/Arun_Woosaree_Resume.pdf'
 // const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
@@ -7,27 +14,30 @@ const PDF_URL = 'https://raw.githubusercontent.com/Arunscape/resume/master/Arun_
 
 const Resume: React.FC = () => {
 
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const canvasEl = useRef(null);
+  useEffect(() => {
 
-  const [loading, numPages] = usePdf({
-    file: PDF_URL,
-    canvasEl,
-    scale: 3
-  });
+    const updateWidth = () => setWidth(window.innerWidth)
 
-  // const scale = window.inner / viewport.width;
 
+    window.addEventListener("resize", updateWidth)
+
+    return () => {
+      window.removeEventListener("resize", updateWidth)
+    }
+
+  }, [width])
 
   return (
-    <>
-      {loading && <span>Loading...</span>}
-      <canvas 
-        width={window.innerWidth}
-        height={window.innerHeight}
-        ref={canvasEl} 
+    <Document
+      file={PDF_URL}
+    >
+      <Page
+        pageNumber={1}
+        width={width}
       />
-    </>
+    </Document>
   );
 
 
