@@ -88,6 +88,39 @@ const AboutCard = () => {
 
   }, [])
 
+  const buttons = [
+    {
+      title: 'Github',
+      route: '/github',
+      icon: <GithubCircle />,
+      newTab: true,
+    },
+    {
+      title: 'Linkedin',
+      route: '/linkedin',
+      icon: <Linkedin />,
+      newTab: true,
+    },
+    {
+      title: 'Email',
+      route: '/email',
+      icon: <At />,
+      newTab: true,
+    },
+    {
+      title: "Résumé",
+      route: '/resume',
+      icon: <ClipboardTextOutline />,
+      newTab: false,
+    },
+    {
+      title: "Projects",
+      route: "/projects",
+      icon: <Coffee />,
+      newTab: false,
+    }
+  ]
+
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -97,52 +130,19 @@ const AboutCard = () => {
         avatar={
           <Avatar className={classes.avatar} src={GITHUB_AVATAR} />
         }
-        // action={
-        //   <IconButton>
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
         title="Arun Woosaree"
         subheader="4th Year Computer Software Engineering Student at the University of Alberta"
       />
-      {/* <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Lorem ipsum do lor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </Typography>
-      </CardContent> */}
       <CardActions disableSpacing>
 
-        {/* // todo refactor */}
 
-        <Tooltip disableFocusListener title="GitHub">
-          <IconButton aria-label="Github" onClick={() => openNewTab('/github')}>
-            <GithubCircle />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip disableFocusListener title="Linkedin">
-          <IconButton aria-label="Linkedin" onClick={() => openNewTab('/linkedin')}>
-            <Linkedin />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip disableFocusListener title="e-mail">
-          <IconButton aria-label="Email" onClick={() => openNewTab('/email')}>
-            <At />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip disableFocusListener title="Résumé">
-          <IconButton aria-label="Resume" onClick={() => history.push('/resume')}>
-            <ClipboardTextOutline />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip disableFocusListener title="Projects">
-          <IconButton aria-label="Other Projects" onClick={() => history.push('/projects')}>
-            <Coffee />
-          </IconButton>
-        </Tooltip>
+        {buttons.map(({ title, route, icon, newTab }) => (
+          <Tooltip disableFocusListener title={title}>
+            <IconButton aria-label={title} onClick={newTab ? () => openNewTab(route) : () => history.push(route)}>
+              {icon}
+            </IconButton>
+          </Tooltip>
+        ))}
 
         <Tooltip disableFocusListener title="Random Joke!">
           <IconButton

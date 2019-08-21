@@ -12,29 +12,37 @@ const externalRedirect = (path: string, url: string) => (
   <Route path={path} exact component={() => {
     window.location.replace(url);
     return null
-  }} 
-  key={path}
+  }}
+    key={path}
   />
 );
 
 const redirectRoutes = [
-  ["/github", "https://github.com/Arunscape"],
-  ["/linkedin", "https://linkedin.com/in/arun-woosaree"],
-  ["/email", "mailto:arun@woosaree.xyz"],
+  {
+    route: '/github',
+    url: 'https://github.com/Arunscape'
+  },
+  {
+    route: '/linkedin',
+    url: 'https://linkedin.com/in/arun-woosaree'
+  },
+  {
+    route: '/email',
+    url: 'mailto:arun@woosaree.xyz'
+  },
 ]
 
-const App: React.FC =  () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Router>
+const App: React.FC = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Router>
       <Header />
-        <Route path="/" exact component={AboutPage} />
-        <Route path="/resume" exact component={Resume} />
-        <Route path="/projects" exact component={Projects} />
-        {redirectRoutes.map((x) => externalRedirect(x[0], x[1]))}
-      </Router>
-    </Suspense>
-  );
-}
+      <Route path="/" exact component={AboutPage} />
+      <Route path="/resume" exact component={Resume} />
+      <Route path="/projects" exact component={Projects} />
+      {redirectRoutes.map((r) => externalRedirect(r.route, r.url))}
+    </Router>
+  </Suspense>
+);
+
 
 export default App;
