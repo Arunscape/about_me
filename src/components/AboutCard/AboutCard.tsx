@@ -3,7 +3,6 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -11,19 +10,14 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Tooltip from '@material-ui/core/Tooltip';
-// import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-
-
+import useReactRouter from 'use-react-router';
 
 import GithubCircle from 'mdi-material-ui/GithubCircle'
 import Linkedin from 'mdi-material-ui/Linkedin'
 import At from 'mdi-material-ui/At'
 import Coffee from 'mdi-material-ui/Coffee'
-// import CoffeeOutline from 'mdi-material-ui/CoffeeOutline'
 import ClipboardTextOutline from 'mdi-material-ui/ClipboardTextOutline'
-import useReactRouter from 'use-react-router';
 
 const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
 const JOKE_API = "https://sv443.net/jokeapi/category/Programming"
@@ -48,7 +42,6 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     avatar: {
-      //   backgroundColor: red[500],
       width: 80,
       height: 80
     },

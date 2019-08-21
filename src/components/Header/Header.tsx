@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Header: React.FC = () =>  {
+const Header: React.FC = () => {
   const classes = useStyles();
-  const { 
+  const {
     // history, 
-    location, 
+    location,
     // match 
   } = useReactRouter();
 
@@ -30,15 +30,12 @@ const Header: React.FC = () =>  {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {/* <Typography variant="h6" className={classes.title}>
-            About Me
-          </Typography> */}
-          <Button 
+          <Button
             color="inherit" href={location.pathname === "/" ? undefined : "/"}
-            style={{textTransform: "none"}}
+            style={{ textTransform: "none" }}
           >
-          <Typography variant="h6" className={classes.title}>
-            About Me
+            <Typography variant="h6" className={classes.title}>
+              About Me
           </Typography>
           </Button>
         </Toolbar>
