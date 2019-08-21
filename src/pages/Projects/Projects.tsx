@@ -10,14 +10,14 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 
-interface project{
-    title: string,
-    githuburl?: string,
-    demourl?: string,
-    description: string,
-    previewimage: string,
-    wip?: boolean,
-  }
+interface project {
+  title: string,
+  githuburl?: string,
+  demourl?: string,
+  description: string,
+  previewimage: string,
+  wip?: boolean,
+}
 
 const useStyles = makeStyles(
   createStyles({
@@ -25,8 +25,11 @@ const useStyles = makeStyles(
       maxWidth: 345,
     },
     root: {
-        flexGrow: 1,
-      },
+      flexGrow: 1,
+      width: '95%',
+      margin: "0 auto",
+      marginTop: '1%',
+    },
   }),
 );
 
@@ -34,61 +37,73 @@ const PROJECTS_URL = 'https://raw.githubusercontent.com/Arunscape/About-Me/maste
 
 const Projects: React.FC = () => {
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const [projects, setProjects] = useState<project[] | null>(null)
-    useEffect(()=>{
-        fetch(PROJECTS_URL)
-        .then(res => res.json())
-        .then(data => setProjects(data))
-    }, [])
+  const [projects, setProjects] = useState<project[] | null>(null)
+  useEffect(() => {
+    fetch(PROJECTS_URL)
+      .then(res => res.json())
+      .then(data => setProjects(data))
+  }, [])
 
-    
 
-    if (!projects){
-        return <div>Loading...</div>
-    }
 
-    return (
-        
-        <div className={classes.root}>
-      <Grid container spacing={3}>
-      {projects.map(p => (
-          <Grid item xs={6}>
-                <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt=""
-                    height="140"
-                    image={p.previewimage}
-                    title={p.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {p.title}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      {p.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
+  if (!projects) {
+    return <div>Loading...</div>
+  }
+
+
+
+  return (
+
+    <div className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="baseline"
+        spacing={3}
+      >
+        {projects.map(p => (
+          <Grid
+            item
+            md
+            key={p.title}
+          >
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt=""
+                  height="140"
+                  image={p.previewimage}
+                  title={p.title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {p.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {p.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Share
                   </Button>
-                  <Button size="small" color="primary">
-                    Learn More
+                <Button size="small" color="primary">
+                  Learn More
                   </Button>
-                </CardActions>
-              </Card>
-              </Grid>
-            ))}
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </div>
-            
-    )
-        }
+
+  )
+}
 
 
 export default Projects;
