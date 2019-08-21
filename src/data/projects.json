@@ -1,7 +1,7 @@
 [
     {
         "title": "ATB 101 Project",
-        "demourl": "https://www.atb.com/learn/articles/Pages/atb-101-students-tackle-business-challenges.aspx",
+        "moreinfo": "https://www.atb.com/learn/articles/Pages/atb-101-students-tackle-business-challenges.aspx",
         "description": "Winning team for the \"Capstone Project\". It is a case competition-like format, but it lasts 4 months and each team of 10 tackled differend problems.",
         "previewimage": "https://www.atb.com/SiteCollectionImages/Articles/Learn/full-atb-101-aug2018.jpg"
     },
@@ -15,27 +15,20 @@
     {
         "title": "Arduino Chess",
         "githuburl": "https://github.com/bojotamara/arduino-chess-game",
-        "description": "Player vs. Player implementation of Chess, on the Arduino",
+        "description": "Player vs. Player implementation of Chess, on the Arduino. Includes some special moves like En Passant and Castling",
         "previewimage": "https://raw.githubusercontent.com/bojotamara/arduino-chess-game/master/fritzing_files/arduinochess_bb.png"
     },
     {
         "title": "Arch Linux Install Script",
         "githuburl": "https://github.com/Arunscape/arch-install-config",
-        "description": "I use Arch, btw",
+        "description": "Personalized install; script that will wipe your hard drive, install arch, and copy my dotfiles over. I use Arch, btw",
         "previewimage": "https://i.kym-cdn.com/photos/images/newsfeed/001/258/245/48f.png"
     },
     {
         "title": "Slack Meme Bot",
         "githuburl": "https://github.com/Arunscape/slack-meme-bot",
-        "description": "Will spam memes as you in a slack channel of your choice. Intervals between posts follow a gamma distribution so as to not arouse suspicion from your peers... ",
+        "description": "Will spam memes on your behalf in a slack channel of your choice. Intervals between posts follow a gamma distribution so as to not arouse suspicion from your peers... ",
         "previewimage": "https://i.kym-cdn.com/photos/images/original/001/218/305/85e.jpg"
-    },
-    {
-        "title": "Rezz Goggles",
-        "githuburl": "https://github.com/Arunscape/Rezz-Goggles",
-        "description": "I wanted an excuse to play with my Arduinos, and LED glasses look cool. This one is a work in progress.",
-        "previewimage": "https://raw.githubusercontent.com/Arunscape/Rezz-Goggles/master/rezz.jpg",
-        "wip": true
     },
     {
         "title": "Rust WASM Snek",
@@ -43,5 +36,12 @@
         "demourl": "https://snek.woosaree.xyz/",
         "description": "A basic snake game written in Rust + Webassembly. Draws on an HTML canvas.",
         "previewimage": "https://raw.githubusercontent.com/Arunscape/rust-wasm-snek/master/snek.png"
+    },
+    {
+        "title": "Rezz Goggles",
+        "githuburl": "https://github.com/Arunscape/Rezz-Goggles",
+        "description": "I wanted an excuse to play with my Arduinos, and LED glasses look cool. This one is still a work in progress.",
+        "previewimage": "https://raw.githubusercontent.com/Arunscape/Rezz-Goggles/master/rezz.jpg",
+        "wip": true
     }
 ]

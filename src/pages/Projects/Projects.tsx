@@ -67,7 +67,7 @@ const Projects: React.FC = () => {
         {projects.map(p => (
           <Grid
             item
-            md
+            xl
             key={p.title}
           >
             <Card className={classes.card}>
