@@ -19,8 +19,6 @@ const Resume: React.FC = () => {
   useEffect(() => {
 
     const updateWidth = () => setWidth(window.innerWidth)
-
-
     window.addEventListener("resize", updateWidth)
 
     return () => {

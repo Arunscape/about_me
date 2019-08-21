@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-// import AboutCard from '../../components/AboutCard/AboutCard'
 const AboutCard = React.lazy(() => import('../../components/AboutCard/AboutCard'))
 
 
