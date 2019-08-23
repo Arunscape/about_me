@@ -19,6 +19,8 @@ import At from 'mdi-material-ui/At'
 import Coffee from 'mdi-material-ui/Coffee'
 import ClipboardTextOutline from 'mdi-material-ui/ClipboardTextOutline'
 
+import { openNewTab } from '../../util'
+
 const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
 const JOKE_API = "https://sv443.net/jokeapi/category/Programming"
 const JOKE_API_BACKUP = "https://sv443.ddns.net/jokeapi/category/Programming"
@@ -48,8 +50,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const openNewTab = (url: string) => window.open(url, '_blank')
-
 const AboutCard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -66,18 +66,26 @@ const AboutCard = () => {
     id: number,
   }
   const [joke, setJoke] = React.useState<jokeapiResponse | null>(null)
+
   React.useEffect(() => {
 
     const getJoke = (url: string) =>
       fetch(url)
         .then(res => res.json())
-        .then(data => setJoke(data))
+        .then(data => data)
 
-    getJoke(JOKE_API)
-    if (!joke) {
-      getJoke(JOKE_API_BACKUP)
+    const setTheJoke = async () => {
+      const jokeResponse = await getJoke(JOKE_API);
+
+      if (!jokeResponse) {
+        const backupJokeResponse = await getJoke(JOKE_API_BACKUP);
+        setJoke(backupJokeResponse);
+      }
+
+      setJoke(jokeResponse);
     }
 
+    setTheJoke();
 
   }, [])
 
@@ -130,8 +138,15 @@ const AboutCard = () => {
 
 
         {buttons.map(({ title, route, icon, newTab }) => (
-          <Tooltip disableFocusListener title={title}>
-            <IconButton aria-label={title} onClick={newTab ? () => openNewTab(route) : () => history.push(route)}>
+          <Tooltip
+            disableFocusListener
+            title={title}
+            key={title}
+          >
+            <IconButton
+              aria-label={title}
+              onClick={newTab ? () => openNewTab(route) : () => history.push(route)}
+            >
               {icon}
             </IconButton>
           </Tooltip>

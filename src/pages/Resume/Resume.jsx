@@ -12,7 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 // const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
 const PDF_URL = 'https://raw.githubusercontent.com/Arunscape/resume/master/Arun_Woosaree_Resume.pdf'
 
-const Resume: React.FC = () => {
+const Resume = () => {
 
   const [width, setWidth] = useState(window.innerWidth);
 

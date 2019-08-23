@@ -9,6 +9,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import IconButton from '@material-ui/core/IconButton'
+import GithubCircle from 'mdi-material-ui/GithubCircle'
+
+import { openNewTab } from '../../util'
+
 
 interface project {
   title: string,
@@ -17,12 +22,14 @@ interface project {
   description: string,
   previewimage: string,
   wip?: boolean,
+  moreinfo?: string,
 }
 
 const useStyles = makeStyles(
   createStyles({
     card: {
-      maxWidth: 345,
+      maxWidth: 400,
+      minWidth: 345,
     },
     root: {
       flexGrow: 1,
@@ -53,21 +60,21 @@ const Projects: React.FC = () => {
   }
 
 
-
   return (
-
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+    >
       <Grid
         container
         direction="row"
-        justify="center"
-        alignItems="baseline"
+        justify="space-around"
+        alignItems="flex-start"
         spacing={3}
       >
         {projects.map(p => (
           <Grid
             item
-            xl
+            // xl
             key={p.title}
           >
             <Card className={classes.card}>
@@ -89,12 +96,37 @@ const Projects: React.FC = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
-                  Share
+
+                {p.demourl && (
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => openNewTab(p.demourl!)}
+                  >
+                    Demo
                   </Button>
-                <Button size="small" color="primary">
-                  Learn More
+                )}
+
+                {p.githuburl && (
+                  <IconButton
+                    aria-label="View the souce code on GitHub"
+                    onClick={() => openNewTab(p.githuburl!)}
+                  >
+                    <GithubCircle />
+                  </IconButton>
+                )}
+
+                {p.moreinfo && (
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => openNewTab(p.moreinfo!)}
+                  >
+                    More Info
                   </Button>
+                )}
+
+
               </CardActions>
             </Card>
           </Grid>
@@ -107,3 +139,6 @@ const Projects: React.FC = () => {
 
 
 export default Projects;
+
+// in case the atb 101 url disappears
+// https://web.archive.org/web/20190822230404/https://www.atb.com/learn/articles/Pages/atb-101-students-tackle-business-challenges.aspx

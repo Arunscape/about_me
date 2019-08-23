@@ -20,24 +20,34 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header: React.FC = () => {
   const classes = useStyles();
-  const {
-    // history, 
-    location,
-    // match 
-  } = useReactRouter();
+  const { history, location } = useReactRouter();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Button
-            color="inherit" href={location.pathname === "/" ? undefined : "/"}
-            style={{ textTransform: "none" }}
-          >
-            <Typography variant="h6" className={classes.title}>
-              About Me
-          </Typography>
-          </Button>
+          {location.pathname === "/" ?
+            (<Button
+              color="inherit"
+              style={{ textTransform: "none" }}
+            >
+              <Typography variant="h6" className={classes.title}>
+                About Me
+              </Typography>
+            </Button>)
+            :
+            (<Button
+              color="inherit"
+              onClick={() => history.push("/")}
+              style={{ textTransform: "none" }}
+
+            >
+              <Typography variant="h6" className={classes.title}>
+                About Me
+              </Typography>
+            </Button>)}
+
+
         </Toolbar>
       </AppBar>
     </div>

@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import useReactRouter from 'use-react-router';
 
 
 const AboutPage = React.lazy(() => import('./pages/AboutPage/AboutPage'));
@@ -32,16 +33,19 @@ const redirectRoutes = [
   },
 ]
 
+
 const App: React.FC = () => (
+
   <Suspense fallback={<div>Loading...</div>}>
     <Router>
       <Header />
       <Route path="/" exact component={AboutPage} />
       <Route path="/resume" exact component={Resume} />
+
       <Route path="/projects" exact component={Projects} />
       {redirectRoutes.map((r) => externalRedirect(r.route, r.url))}
     </Router>
-  </Suspense>
+  </Suspense >
 );
 
 
