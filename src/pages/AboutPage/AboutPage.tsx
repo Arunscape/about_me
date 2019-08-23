@@ -13,7 +13,7 @@ const AboutPage: React.FC = () => {
         height: '100%',
         width: '100%',
         position: 'fixed',
-        backgroundImage: "url('https://raw.githubusercontent.com/Arunscape/About-Me/gh-pages/images/bg3.jpg')",
+        backgroundImage: "url('https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/background.jpg')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
