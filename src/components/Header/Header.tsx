@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Switch from '@material-ui/core/Switch'
+
 import useReactRouter from 'use-react-router';
+
+import useDarkMode from '../../util/useDarkMode'
+import { ThemeContext } from '../../util/themeContext';
+
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -21,6 +28,11 @@ const useStyles = makeStyles((theme: Theme) =>
 const Header: React.FC = () => {
   const classes = useStyles();
   const { history, location } = useReactRouter();
+
+  // const { theme, toggleTheme } = useDarkMode();
+
+  // @ts-ignore
+  const [theme, dispatch] = useContext(ThemeContext);
 
   return (
     <div className={classes.root}>
@@ -46,6 +58,24 @@ const Header: React.FC = () => {
                 About Me
               </Typography>
             </Button>)}
+
+          <Switch
+            // @ts-ignore
+            checked={theme.value}
+            // @ts-ignore
+            onChange={(event) => {
+
+              if (event.target.checked) {
+                dispatch({ type: 'darkMode' })
+              } else {
+                dispatch({ type: 'lightMode' })
+              }
+
+            }
+            }
+            value="toggle"
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
 
 
         </Toolbar>

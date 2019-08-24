@@ -1,7 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import useReactRouter from 'use-react-router';
+
+import useDarkMode from './util/useDarkMode';
+import { ThemeProvider } from './util/themeContext'
+import MaterialThemeWrapper from './components/themeWrapper'
 
 
 const AboutPage = React.lazy(() => import('./pages/AboutPage/AboutPage'));
@@ -34,19 +37,30 @@ const redirectRoutes = [
 ]
 
 
-const App: React.FC = () => (
+const App: React.FC = () => {
 
-  <Suspense fallback={<div>Loading...</div>}>
-    <Router>
-      <Header />
-      <Route path="/" exact component={AboutPage} />
-      <Route path="/resume" exact component={Resume} />
+  const [theme, setTheme] = useState()
 
-      <Route path="/projects" exact component={Projects} />
-      {redirectRoutes.map((r) => externalRedirect(r.route, r.url))}
-    </Router>
-  </Suspense >
-);
+
+
+
+  return (
+    <ThemeProvider>
+      <MaterialThemeWrapper>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Router basename="/">
+            <Header />
+            <Route path="/" exact component={AboutPage} />
+            <Route path="/resume" exact component={Resume} />
+
+            <Route path="/projects" exact component={Projects} />
+            {redirectRoutes.map((r) => externalRedirect(r.route, r.url))}
+          </Router>
+        </Suspense >
+      </MaterialThemeWrapper>
+    </ThemeProvider>
+  );
+}
 
 
 export default App;
