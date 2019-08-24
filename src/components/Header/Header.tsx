@@ -6,6 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch'
 
+
+import WhiteBalanceSunny from 'mdi-material-ui/WhiteBalanceSunny'
+import WeatherNight from 'mdi-material-ui/WeatherNight'
+
 import useReactRouter from 'use-react-router';
 
 import { ThemeContext } from '../../util/themeContext';
@@ -17,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      flex: 1,
     },
   }),
 );
@@ -71,6 +76,12 @@ const Header: React.FC = () => {
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
 
+          {
+            theme.value ?
+              <WeatherNight /> :
+              <WhiteBalanceSunny />
+
+          }
 
         </Toolbar>
       </AppBar>
