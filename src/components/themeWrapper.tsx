@@ -5,7 +5,7 @@ import { ThemeContext } from '../util/themeContext';
 const MaterialThemeWrapper = ({ children }: { children: any }) => {
 
     // @ts-ignore
-    const [theme, dispatch] = useContext(ThemeContext)
+    const [theme] = useContext(ThemeContext)
 
 
     const [materialTheme, setMaterialTheme] = useState({

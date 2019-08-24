@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from 'react';
-import { light } from '@material-ui/core/styles/createPalette';
 
 interface theme {
     theme: 'light' | 'dark',

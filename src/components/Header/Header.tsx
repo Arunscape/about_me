@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,11 +8,7 @@ import Switch from '@material-ui/core/Switch'
 
 import useReactRouter from 'use-react-router';
 
-import useDarkMode from '../../util/useDarkMode'
 import { ThemeContext } from '../../util/themeContext';
-
-
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,8 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
 const Header: React.FC = () => {
   const classes = useStyles();
   const { history, location } = useReactRouter();
-
-  // const { theme, toggleTheme } = useDarkMode();
 
   // @ts-ignore
   const [theme, dispatch] = useContext(ThemeContext);
