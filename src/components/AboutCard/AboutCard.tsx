@@ -18,8 +18,10 @@ import Linkedin from 'mdi-material-ui/Linkedin'
 import At from 'mdi-material-ui/At'
 import Coffee from 'mdi-material-ui/Coffee'
 import ClipboardTextOutline from 'mdi-material-ui/ClipboardTextOutline'
+import Refresh from 'mdi-material-ui/Refresh'
 
 import { openNewTab } from '../../util'
+import { Icon } from '@material-ui/core';
 
 const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
 const JOKE_API = "https://sv443.net/jokeapi/category/Programming"
@@ -47,6 +49,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 80,
       height: 80
     },
+    refreshJoke: {
+      float: 'right'
+    },
   }),
 );
 
@@ -67,26 +72,24 @@ const AboutCard = () => {
   }
   const [joke, setJoke] = React.useState<jokeapiResponse | null>(null)
 
-  React.useEffect(() => {
+  const getJoke = (url: string) =>
+    fetch(url)
+      .then(res => res.json())
+      .then(data => data)
 
-    const getJoke = (url: string) =>
-      fetch(url)
-        .then(res => res.json())
-        .then(data => data)
+  const setTheJoke = async () => {
+    const jokeResponse = await getJoke(JOKE_API);
 
-    const setTheJoke = async () => {
-      const jokeResponse = await getJoke(JOKE_API);
-
-      if (!jokeResponse) {
-        const backupJokeResponse = await getJoke(JOKE_API_BACKUP);
-        setJoke(backupJokeResponse);
-      }
-
-      setJoke(jokeResponse);
+    if (!jokeResponse) {
+      const backupJokeResponse = await getJoke(JOKE_API_BACKUP);
+      setJoke(backupJokeResponse);
     }
 
-    setTheJoke();
+    setJoke(jokeResponse);
+  }
 
+  React.useEffect(() => {
+    setTheJoke();
   }, [])
 
   const buttons = [
@@ -188,6 +191,17 @@ const AboutCard = () => {
             )
           }
           {!joke && <div>Loading Joke...</div>}
+          <Tooltip
+            disableFocusListener
+            title="Get a new joke"
+            className={classes.refreshJoke}
+          >
+            <IconButton
+              onClick={() => setTheJoke()}
+            >
+              <Refresh />
+            </IconButton>
+          </Tooltip>
         </CardContent>
       </Collapse>
     </Card>
