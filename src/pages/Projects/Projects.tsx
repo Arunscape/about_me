@@ -121,7 +121,7 @@ const Projects: React.FC = () => {
                   {p.demourl && (
                     <Button
                       size="small"
-                      color="primary"
+                      color="inherit"
                       onClick={() => openNewTab(p.demourl!)}
                     >
                       Demo
@@ -140,7 +140,7 @@ const Projects: React.FC = () => {
                   {p.moreinfo && (
                     <Button
                       size="small"
-                      color="primary"
+                      color="inherit"
                       onClick={() => openNewTab(p.moreinfo!)}
                     >
                       More Info
