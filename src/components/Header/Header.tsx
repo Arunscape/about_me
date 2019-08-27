@@ -19,10 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
-    title: {
+    span: {
       flexGrow: 1,
-      flex: 1,
     },
+    button: {
+      textTransform: 'none',
+    }
   }),
 );
 
@@ -40,9 +42,9 @@ const Header: React.FC = () => {
           {location.pathname === "/" ?
             (<Button
               color="inherit"
-              style={{ textTransform: "none" }}
+              className={classes.button}
             >
-              <Typography variant="h6" className={classes.title}>
+              <Typography variant="h6" >
                 About Me
               </Typography>
             </Button>)
@@ -50,13 +52,16 @@ const Header: React.FC = () => {
             (<Button
               color="inherit"
               onClick={() => history.push("/")}
-              style={{ textTransform: "none" }}
+              className={classes.button}
 
             >
-              <Typography variant="h6" className={classes.title}>
+              <Typography variant="h6" >
                 About Me
               </Typography>
             </Button>)}
+
+
+          <span className={classes.span} />
 
           <Switch
             // @ts-ignore
