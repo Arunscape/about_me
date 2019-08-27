@@ -14,6 +14,10 @@ import useReactRouter from 'use-react-router';
 
 import { ThemeContext } from '../../util/themeContext';
 
+import Download from 'mdi-material-ui/Download'
+
+const RESUME_PDF = 'https://raw.githubusercontent.com/Arunscape/resume/master/Arun_Woosaree_Resume.pdf'
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -62,6 +66,17 @@ const Header: React.FC = () => {
 
 
           <span className={classes.span} />
+
+          {location.pathname === "/resume" && (
+            <Button
+              color="inherit"
+              href={RESUME_PDF}
+            >
+              Download PDF
+              <Download />
+            </Button>
+
+          )}
 
           <Switch
             // @ts-ignore
