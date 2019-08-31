@@ -41,7 +41,11 @@ const Header: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar 
+        position="static"
+        // @ts-ignore
+        color={theme.value ? '#002884' : 'primary'}
+      >
         <Toolbar>
           {location.pathname === "/" ?
             (<Button
