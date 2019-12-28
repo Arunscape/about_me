@@ -38,6 +38,12 @@
         "previewimage": "https://raw.githubusercontent.com/Arunscape/rust-wasm-snek/master/snek.png"
     },
     {
+        "title": "acat",
+        "githuburl": "https://github.com/arunscape/acat",
+        "description": "Arun's cat. A cat clone that pukes skittles",
+        "previewimage": "https://upload.wikimedia.org/wikipedia/en/e/ed/Nyan_cat_250px_frame.PNG"
+    },
+    {
         "title": "Rezz Goggles",
         "githuburl": "https://github.com/Arunscape/Rezz-Goggles",
         "description": "I wanted an excuse to play with my Arduinos, and LED glasses look cool. This one is still a work in progress.",
