@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton'
 import GithubCircle from 'mdi-material-ui/GithubCircle'
 
 import { openNewTab } from '../../util'
+import { ThemeContext } from '../../util/themeContext';
 
 
 interface project {
@@ -41,25 +42,29 @@ const useStyles = makeStyles(
   }),
 );
 
-const style = {
-  // display: 'flex',
-  // alignItems: 'center',
-  // justifyContent: 'center',
-  height: '100%',
-  width: '100%',
-  position: 'fixed',
-  backgroundImage: "url('https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/background.jpg')",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center center",
-  backgroundSize: "cover",
-  backgroundAttachment: "fixed",
-  filter: "blur(8px)",
-  zIndex: -1,
-}
+
 
 const PROJECTS_URL = 'https://raw.githubusercontent.com/Arunscape/About-Me/master/src/data/projects.json';
 
 const Projects: React.FC = () => {
+  // @ts-ignore
+  const [theme, dispatch] = useContext(ThemeContext);
+
+  const style = {
+    // display: 'flex',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    height: '100%',
+    width: '100%',
+    position: 'fixed',
+    backgroundImage: theme.value ? "url('https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/btwiusearch.jpg')" : "url('https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/background.jpg')",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
+    backgroundAttachment: "fixed",
+    filter: "blur(4px)",
+    zIndex: -1,
+  }
 
   const classes = useStyles();
 

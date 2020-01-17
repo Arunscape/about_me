@@ -41,10 +41,11 @@ const Header: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar 
+      <AppBar
         position="static"
         // @ts-ignore
         color={theme.value ? '#002884' : 'primary'}
+      // color='inherit'
       >
         <Toolbar>
           {location.pathname === "/" ?
