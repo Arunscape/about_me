@@ -12,6 +12,12 @@
         "description": "Gallery in Three.js is a 3-D gallery app made in Three.js, which is a 3-D Javascript library. The web application has three modes, in which GIFS are displayed on the walls in a hallway that you can walk through. This hack won in the category: Best Web/Data Hack",
         "previewimage": "https://raw.githubusercontent.com/Arunscape/Gallery-In-Three.js-HackED-Beta-2017/new_master/images/partymode.PNG"
     },
+    {   "title": "Tindin HackED 2020",
+         "githuburl": "https://github.com/Arunscape/tindin",
+         "demourl": "http://tindin.space",
+         "description": "Have you ever wanted to date someone AND potentially hire them? Well now you can do any linear combination of the two!",
+         "previewimage": "https://raw.githubusercontent.com/Arunscape/tindin/master/frontend/src/assets/tindinlogo.svg"
+    }
     {
         "title": "Arduino Chess",
         "githuburl": "https://github.com/bojotamara/arduino-chess-game",
