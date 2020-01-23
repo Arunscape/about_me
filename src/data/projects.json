@@ -17,7 +17,7 @@
          "demourl": "http://tindin.space",
          "description": "Have you ever wanted to date someone AND potentially hire them? Well now you can do any linear combination of the two!",
          "previewimage": "https://raw.githubusercontent.com/Arunscape/tindin/master/frontend/src/assets/tindinlogo.svg"
-    }
+    },
     {
         "title": "Arduino Chess",
         "githuburl": "https://github.com/bojotamara/arduino-chess-game",
