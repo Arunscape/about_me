@@ -18,6 +18,12 @@
          "description": "Have you ever wanted to date someone AND potentially hire them? Well now you can do any linear combination of the two!",
          "previewimage": "https://raw.githubusercontent.com/Arunscape/tindin/master/frontend/src/assets/tindinlogo.svg"
     },
+    {   "title": "Connect 4 WASM 🦀",
+         "githuburl": "https://github.com/Arunscape/ECE421-GroupProject1/tree/master/connect4",
+         "demourl": "http://connect4.woosaree.xyz",
+         "description": "Connect 4 and Toot and Otto, written in Rust",
+         "previewimage": "https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/connect4preview.png"
+    },
     {
         "title": "Arduino Chess",
         "githuburl": "https://github.com/bojotamara/arduino-chess-game",
