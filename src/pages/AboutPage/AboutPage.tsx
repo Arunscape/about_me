@@ -8,9 +8,10 @@ const AboutCard = React.lazy(() => import('../../components/AboutCard/AboutCard'
 
 
 const AboutPage: React.FC = () => {
-
-    // @ts-ignore
-    const [theme, dispatch] = useContext(ThemeContext);
+ //@ts-ignore
+    const [theme, 
+        // dispatch
+    ] = useContext(ThemeContext);
 
     const style = {
         display: 'flex',

@@ -89,6 +89,7 @@ const AboutCard = () => {
 
   React.useEffect(() => {
     setTheJoke();
+    // eslint-disable-next-line
   }, [])
 
   const buttons = [
@@ -100,7 +101,7 @@ const AboutCard = () => {
     },
     {
       title: 'Linkedin',
-      route: '/linkedin',
+      route: '/linkedin',// eslint-disable-next-line
       icon: <Linkedin />,
       newTab: true,
     },

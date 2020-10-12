@@ -48,7 +48,9 @@ const PROJECTS_URL = 'https://raw.githubusercontent.com/Arunscape/About-Me/maste
 
 const Projects: React.FC = () => {
   // @ts-ignore
-  const [theme, dispatch] = useContext(ThemeContext);
+  const [theme, 
+    // dispatch
+  ] = useContext(ThemeContext);
 
   const style = {
     // display: 'flex',
