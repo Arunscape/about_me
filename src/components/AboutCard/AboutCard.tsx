@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Tooltip from '@material-ui/core/Tooltip';
 import useReactRouter from 'use-react-router';
 
-import GithubCircle from 'mdi-material-ui/GithubCircle'
+import Github from 'mdi-material-ui/Github';
 import Linkedin from 'mdi-material-ui/Linkedin'
 import At from 'mdi-material-ui/At'
 import Coffee from 'mdi-material-ui/Coffee'
@@ -21,7 +21,6 @@ import ClipboardTextOutline from 'mdi-material-ui/ClipboardTextOutline'
 import Refresh from 'mdi-material-ui/Refresh'
 
 import { openNewTab } from '../../util'
-import { Icon } from '@material-ui/core';
 
 const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
 const JOKE_API = "https://sv443.net/jokeapi/category/Programming"
@@ -96,7 +95,7 @@ const AboutCard = () => {
     {
       title: 'Github',
       route: '/github',
-      icon: <GithubCircle />,
+      icon: <Github />,
       newTab: true,
     },
     {

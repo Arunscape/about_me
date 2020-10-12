@@ -10,8 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'
 
-import IconButton from '@material-ui/core/IconButton'
-import GithubCircle from 'mdi-material-ui/GithubCircle'
+import IconButton from '@material-ui/core/IconButton';
+import Github from 'mdi-material-ui/Github';
 
 import { openNewTab } from '../../util'
 import { ThemeContext } from '../../util/themeContext';
@@ -138,7 +138,7 @@ const Projects: React.FC = () => {
                       aria-label="View the souce code on GitHub"
                       onClick={() => openNewTab(p.githuburl!)}
                     >
-                      <GithubCircle />
+                      <Github/>
                     </IconButton>
                   )}
 
