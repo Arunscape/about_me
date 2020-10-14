@@ -23,8 +23,7 @@ import Refresh from 'mdi-material-ui/Refresh'
 import { openNewTab } from '../../util'
 
 const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
-const JOKE_API = "https://sv443.net/jokeapi/category/Programming"
-const JOKE_API_BACKUP = "https://sv443.ddns.net/jokeapi/category/Programming"
+const JOKE_API = "https://jokeapi.arunw.workers.dev"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -60,35 +59,15 @@ const AboutCard = () => {
 
   const { history } = useReactRouter();
 
+  const [joke, setJoke] = React.useState<string | null>(null)
 
-  interface jokeapiResponse {
-    category: string,
-    type: string,
-    joke?: string,
-    setup?: string,
-    delivery?: string,
-    id: number,
-  }
-  const [joke, setJoke] = React.useState<jokeapiResponse | null>(null)
-
-  const getJoke = (url: string) =>
-    fetch(url)
-      .then(res => res.json())
-      .then(data => data)
-
-  const setTheJoke = async () => {
-    const jokeResponse = await getJoke(JOKE_API);
-
-    if (!jokeResponse) {
-      const backupJokeResponse = await getJoke(JOKE_API_BACKUP);
-      setJoke(backupJokeResponse);
-    }
-
-    setJoke(jokeResponse);
-  }
+  const getJoke = async () => {
+    const joke = await fetch(JOKE_API);
+    setJoke(await joke.text());
+  };
 
   React.useEffect(() => {
-    setTheJoke();
+    getJoke();
     // eslint-disable-next-line
   }, [])
 
@@ -171,23 +150,10 @@ const AboutCard = () => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           {
-            joke && joke.joke && (
-              <Typography>
-                {joke.joke}
+            joke && (
+              <Typography variant={'subtitle2'}>
+                {joke}
               </Typography>
-            )
-          }
-          {
-            joke && joke.setup && joke.delivery && (
-              <>
-                <Typography paragraph>
-                  {joke.setup}
-                </Typography>
-
-                <Typography>
-                  {joke.delivery}
-                </Typography>
-              </>
             )
           }
           {!joke && <div>Loading Joke...</div>}
@@ -197,7 +163,7 @@ const AboutCard = () => {
             className={classes.refreshJoke}
           >
             <IconButton
-              onClick={() => setTheJoke()}
+              onClick={() => getJoke()}
             >
               <Refresh />
             </IconButton>
