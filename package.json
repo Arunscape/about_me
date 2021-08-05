@@ -5,7 +5,8 @@
     "test": "web-test-runner \"src/**/*.test.ts\""
   },
   "dependencies": {
-    "svelte": "^3.37.0"
+    "svelte": "^3.37.0",
+    "three": "^0.131.3"
   },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.1.0",
@@ -17,6 +18,7 @@
     "@types/chai": "^4.2.17",
     "@types/mocha": "^8.2.2",
     "@types/snowpack-env": "^2.3.3",
+    "@types/three": "^0.130.1",
     "@web/test-runner": "^0.13.3",
     "chai": "^4.3.4",
     "snowpack": "^3.3.7",
