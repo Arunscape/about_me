@@ -1,4 +1,4 @@
-import { Title, Text, Anchor, Container, Grid, Image, PopOver, Badge, Popover, AppShell, Header, Burger, MediaQuery, useMantineTheme } from '@mantine/core';
+import { Title, Text, Anchor, Container, Grid, Image, Badge, Popover, AppShell, Header, Burger, MediaQuery, useMantineTheme } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { useState } from 'react';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
