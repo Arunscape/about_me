@@ -114,7 +114,7 @@ const AboutCard = () => {
           <Avatar className={classes.avatar} src={GITHUB_AVATAR} />
         }
         title="Arun Woosaree"
-        subheader="4th Year Computer Software Engineering Student at the University of Alberta"
+        subheader="BSc. Computer Engineering Software Co-op - University of Alberta"
       />
       <CardActions disableSpacing>
 
