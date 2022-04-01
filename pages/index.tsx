@@ -17,11 +17,17 @@ import {
   Button,
   Chip,
   Chips,
+  List,
+  Card,
+  Group,
+  Space,
+  Divider,
 } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import Link from "next/link";
 import { useState } from "react";
 import { ColorSchemeToggle } from "../components/ColorSchemeToggle/ColorSchemeToggle";
+import Projects from "../data/projects.json"
 
 interface BadgesProps {
   badges: {
@@ -82,6 +88,11 @@ export default function HomePage() {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
 
+  const secondaryColor = theme.colorScheme === 'dark'
+    ? theme.colors.dark[1]
+    : theme.colors.gray[7];
+
+
   return (<>
     {/* header of some sort */}
     <AppShell
@@ -100,8 +111,11 @@ export default function HomePage() {
               />
             </MediaQuery>
 
-            <Text>Arun Woosaree</Text>
-            <ColorSchemeToggle />
+            <Group>
+              <Text>Arun Woosaree</Text>
+              <Space w="xl" />
+              <ColorSchemeToggle />
+            </Group>
           </div>
         </Header>
       }
@@ -165,7 +179,7 @@ export default function HomePage() {
           </Grid>
         </Container>
       </section>
-
+      <Divider my="sm" />
       <section id="sec-2">
         <Title>Work Experience</Title>
 
@@ -184,13 +198,11 @@ export default function HomePage() {
             <Text color="dimmed" size="md">
               Software Eng
             </Text>
-            <ul>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Joint Canada UK operation
-                </Text>
-              </li>
-            </ul>
+            <List size="sm">
+              <List.Item>
+                Joint Canada UK operation
+              </List.Item>
+            </List>
             <Badges
               badges={[
                 python,
@@ -214,15 +226,13 @@ export default function HomePage() {
             <Text color="dimmed" size="md">
               Backend Developer
             </Text>
-            <ul>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Automated the storage of customer files and documents,
-                  ensuring the correct metadata and policies areapplied while
-                  working on the Enterprise Content Management team
-                </Text>
-              </li>
-            </ul>
+            <List size="sm">
+              <List.Item>
+                Automated the storage of customer files and documents,
+                ensuring the correct metadata and policies areapplied while
+                working on the Enterprise Content Management team
+              </List.Item>
+            </List>
             <Badges
               badges={[
                 java,
@@ -247,26 +257,20 @@ export default function HomePage() {
             <Text color="dimmed" size="md">
               Full Stack Developer
             </Text>
-            <ul>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Mentored a team of 10 people using agile practices to solve
-                  a business case problem
-                </Text>
-              </li>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Migrated microservices from IBM Bluemix to Google Cloud
-                  Platform
-                </Text>
-              </li>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Worked on the frontend and backend for ATB’s new online
-                  banking website for business customers
-                </Text>
-              </li>
-            </ul>
+            <List size="sm">
+              <List.Item>
+                Mentored a team of 10 people using agile practices to solve
+                a business case problem
+              </List.Item>
+              <List.Item>
+                Migrated microservices from IBM Bluemix to Google Cloud
+                Platform
+              </List.Item>
+              <List.Item>
+                Worked on the frontend and backend for ATB’s new online
+                banking website for business customers
+              </List.Item>
+            </List>
             <Badges
               badges={[
                 react,
@@ -279,8 +283,8 @@ export default function HomePage() {
                 java,
                 python,
                 jira
-              ]}/>
-              <Text size="xs" mt={4}>
+              ]} />
+            <Text size="xs" mt={4}>
               January 2019 - August 2019
             </Text>
           </Timeline.Item>
@@ -293,22 +297,18 @@ export default function HomePage() {
             <Text color="dimmed" size="md">
               ATB 101 Developer
             </Text>
-            <ul>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Winning team for the ”Capstone Project”. It is a case
-                  competition-like format, but lasts 4 months and eachteam of
-                  10 tackled different problems. More info :
-                  https://www.atb.com/company/careers/atb-101/
-                </Text>
-              </li>
-              <li>
-                <Text color="dimmed" size="sm">
-                  Worked on UI and backend for ATB’s new online banking
-                  website for business customers
-                </Text>
-              </li>
-            </ul>
+            <List size="sm">
+              <List.Item>
+                Winning team for the ”Capstone Project”. It is a case
+                competition-like format, but lasts 4 months and eachteam of
+                10 tackled different problems. More info :
+                https://www.atb.com/company/careers/atb-101/
+              </List.Item>
+              <List.Item>
+                Worked on UI and backend for ATB’s new online banking
+                website for business customers
+              </List.Item>
+            </List>
             <Badges
               badges={[
                 react,
@@ -317,12 +317,48 @@ export default function HomePage() {
                 docker,
                 jira,
                 bluemix
-              ]}/>
+              ]} />
             <Text size="xs" mt={4}>
               May 2018 - August 2018
             </Text>
           </Timeline.Item>
         </Timeline>
+      </section>
+      <Divider my="sm" />
+      <section id="sec-3">
+        <Title order={1}>Projects</Title>
+
+        <Grid>
+
+          {Projects.map(p => (
+            <Grid.Col span={3}>
+
+              <Card shadow="sm" p="lg">
+                <Card.Section>
+                  <Image src={p.previewimage} height={160} alt="Norway" />
+                </Card.Section>
+
+                <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
+                  <Text weight={500}>{p.title}</Text>
+                  {p.wip && <Badge color="pink" variant="light">
+                    Work in progress
+                  </Badge>}
+                </Group>
+
+                <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
+                  {p.description}
+                </Text>
+
+                {p.demourl && <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }} href={p.demourl} component="a" target="_blank">
+                  Demo
+                </Button>}
+                {p.githuburl && <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }} href={p.githuburl} component="a" target="_blank">
+                  Github
+                </Button>}
+              </Card>
+            </Grid.Col>
+          ))}
+        </  Grid>
       </section>
     </AppShell>
   </>
