@@ -3,7 +3,7 @@
         "title": "ATB 101 Project",
         "moreinfo": "https://web.archive.org/web/20190822230404/https://www.atb.com/learn/articles/Pages/atb-101-students-tackle-business-challenges.aspx",
         "description": "Winning team for the \"Capstone Project\". It is a case competition-like format, but it lasts 4 months and each team of 10 tackled different problems.",
-        "previewimage": "https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/full-atb-101-aug2018.jpg"
+        "previewimage": "/images/full-atb-101-aug2018.jpg"
     },
     {
         "title": "Gallery In Three.js HackED Beta 2017",
@@ -22,7 +22,7 @@
          "githuburl": "https://github.com/Arunscape/ECE421-GroupProject1/tree/master/connect4",
          "demourl": "http://connect4.woosaree.xyz",
          "description": "Connect 4 and Toot and Otto, written in Rust",
-         "previewimage": "https://raw.githubusercontent.com/Arunscape/About-Me/master/src/images/connect4preview.png"
+         "previewimage": "/images/connect4preview.png"
     },
     {
         "title": "Arduino Chess",

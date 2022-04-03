@@ -23,6 +23,7 @@ import {
   Space,
   Divider,
 } from "@mantine/core";
+
 import { useHover } from "@mantine/hooks";
 import Link from "next/link";
 import { useState } from "react";
@@ -38,8 +39,8 @@ interface BadgesProps {
 const Badges = (props: BadgesProps) => {
   return (
     <>
-      {props.badges.map((b) => (
-        <Badge component="a" href={b.link} target="_blank" variant="outline">
+      {props.badges.map((b, i) => (
+        <Badge component="a" href={b.link} target="_blank" variant="outline" key={i}>
           {b.content}
         </Badge>
       ))}
@@ -120,6 +121,7 @@ export default function HomePage() {
         </Header>
       }
     >
+
       <section id="sec-1">
         <Container>
           <Grid justify="space-around">
@@ -330,8 +332,8 @@ export default function HomePage() {
 
         <Grid>
 
-          {Projects.map(p => (
-            <Grid.Col span={3}>
+          {Projects.map((p, i) => (
+            <Grid.Col span={3} key={i}>
 
               <Card shadow="sm" p="lg">
                 <Card.Section>
