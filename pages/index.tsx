@@ -22,13 +22,18 @@ import {
   Group,
   Space,
   Divider,
+  // Modal,
 } from "@mantine/core";
 
 import { useHover } from "@mantine/hooks";
 import Link from "next/link";
 import { useState } from "react";
 import { ColorSchemeToggle } from "../components/ColorSchemeToggle/ColorSchemeToggle";
+// import { Document, Page } from 'react-pdf';
 import Projects from "../data/projects.json"
+// import { pdfjs } from 'react-pdf';
+
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 interface BadgesProps {
   badges: {
@@ -88,6 +93,7 @@ const arduino = { link: "https://www.arduino.cc/", content: "Arduino" }
 export default function HomePage() {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
+  const [modalOpen, setModalOpen] = useState(false);
 
   const secondaryColor = theme.colorScheme === 'dark'
     ? theme.colors.dark[1]
@@ -121,9 +127,10 @@ export default function HomePage() {
         </Header>
       }
     >
+      <Container>
 
-      <section id="sec-1">
-        <Container>
+        <section id="sec-1">
+          {/* <Container> */}
           <Grid justify="space-around">
             <Grid.Col xs={6} sm={8} md={8} lg={8}>
               <Text>
@@ -179,189 +186,211 @@ export default function HomePage() {
               <Image src="https://avatars.githubusercontent.com/arunscape" />
             </Grid.Col>
           </Grid>
-        </Container>
-      </section>
-      <Divider my="sm" />
-      <section id="sec-2">
-        <Title>Work Experience</Title>
+          {/* </Container> */}
+        </section>
+        <Divider my="sm" />
+        <section id="sec-2">
+          {/* <Container> */}
 
-        <div>
-          <Link href="https://github.com/Arunscape/resume/raw/master/Arun_Woosaree_Resume.pdf">
-            <Button>Download resume</Button>
-          </Link>
-        </div>
-        <Timeline active={3} bulletSize={36} lineWidth={2}>
-          <Timeline.Item
-            bullet={<div>GD</div>}
-            title={
-              <Text size="lg">General Dynamics Mission Systems Canada</Text>
-            }
-          >
-            <Text color="dimmed" size="md">
-              Software Eng
-            </Text>
-            <List size="sm">
-              <List.Item>
-                Joint Canada UK operation
-              </List.Item>
-            </List>
-            <Badges
-              badges={[
-                python,
-                cplusplus,
-                csharp,
-                gitlab,
-                docker,
-                powershell,
-                bash,
-              ]}
-            />
-            <Text size="xs" mt={4}>
-              January 2022 - Present
-            </Text>
-          </Timeline.Item>
+          <Title>Work Experience</Title>
 
-          <Timeline.Item
-            bullet={<div>ATB</div>}
-            title={<Text size="lg">ATB Financial</Text>}
-          >
-            <Text color="dimmed" size="md">
-              Backend Developer
-            </Text>
-            <List size="sm">
-              <List.Item>
-                Automated the storage of customer files and documents,
-                ensuring the correct metadata and policies areapplied while
-                working on the Enterprise Content Management team
-              </List.Item>
-            </List>
-            <Badges
-              badges={[
-                java,
-                javascript,
-                gcp,
-                kubernetes,
-                gitlab,
-                docusign,
-                box,
-                jira,
-              ]}
-            />
-            <Text size="xs" mt={4}>
-              June 2020 - December 2020
-            </Text>
-          </Timeline.Item>
+          <Container>
+            {/* <Button onClick={() => setModalOpen(true)}>View resume</Button>
+            <Modal
+              overflow="outside"
+              opened={modalOpen}
+              onClose={() => setModalOpen(false)}
+            >
 
-          <Timeline.Item
-            bullet={<div>ATB</div>}
-            title={<Text size="lg">ATB Financial</Text>}
-          >
-            <Text color="dimmed" size="md">
-              Full Stack Developer
-            </Text>
-            <List size="sm">
-              <List.Item>
-                Mentored a team of 10 people using agile practices to solve
-                a business case problem
-              </List.Item>
-              <List.Item>
-                Migrated microservices from IBM Bluemix to Google Cloud
-                Platform
-              </List.Item>
-              <List.Item>
-                Worked on the frontend and backend for ATB’s new online
-                banking website for business customers
-              </List.Item>
-            </List>
-            <Badges
-              badges={[
-                react,
-                redux,
-                express,
-                gcp,
-                docker,
-                kubernetes,
-                jenkins,
-                java,
-                python,
-                jira
-              ]} />
-            <Text size="xs" mt={4}>
-              January 2019 - August 2019
-            </Text>
-          </Timeline.Item>
+              <Document
+                file='https://raw.githubusercontent.com/Arunscape/resume/master/Arun_Woosaree_Resume.pdf'
+              >
+                <Page
+                  pageNumber={1}
+                // width={width}
+                />
+              </Document>
+            </Modal> */}
+            <Button component="a" href="https://github.com/Arunscape/resume/raw/master/Arun_Woosaree_Resume.pdf" target="_blank">Download resume</Button>
+          </Container>
 
-          <Timeline.Item
-            bullet={<div>ATB</div>}
-            title={<Text size="lg">ATB Financial</Text>}
-          //lineVariant="dashed"
-          >
-            <Text color="dimmed" size="md">
-              ATB 101 Developer
-            </Text>
-            <List size="sm">
-              <List.Item>
-                Winning team for the ”Capstone Project”. It is a case
-                competition-like format, but lasts 4 months and eachteam of
-                10 tackled different problems. More info :
-                https://www.atb.com/company/careers/atb-101/
-              </List.Item>
-              <List.Item>
-                Worked on UI and backend for ATB’s new online banking
-                website for business customers
-              </List.Item>
-            </List>
-            <Badges
-              badges={[
-                react,
-                redux,
-                express,
-                docker,
-                jira,
-                bluemix
-              ]} />
-            <Text size="xs" mt={4}>
-              May 2018 - August 2018
-            </Text>
-          </Timeline.Item>
-        </Timeline>
-      </section>
-      <Divider my="sm" />
-      <section id="sec-3">
-        <Title order={1}>Projects</Title>
+          <Timeline active={3} bulletSize={36} lineWidth={2}>
+            <Timeline.Item
+              bullet={<div>GD</div>}
+              title={
+                <Text size="lg">General Dynamics Mission Systems Canada</Text>
+              }
+            >
+              <Text color="dimmed" size="md">
+                Software Eng
+              </Text>
+              <List size="sm">
+                <List.Item>
+                  Joint Canada UK operation
+                </List.Item>
+              </List>
+              <Badges
+                badges={[
+                  python,
+                  cplusplus,
+                  csharp,
+                  gitlab,
+                  docker,
+                  powershell,
+                  bash,
+                ]}
+              />
+              <Text size="xs" mt={4}>
+                January 2022 - Present
+              </Text>
+            </Timeline.Item>
 
-        <Grid>
+            <Timeline.Item
+              bullet={<div>ATB</div>}
+              title={<Text size="lg">ATB Financial</Text>}
+            >
+              <Text color="dimmed" size="md">
+                Backend Developer
+              </Text>
+              <List size="sm">
+                <List.Item>
+                  Automated the storage of customer files and documents,
+                  ensuring the correct metadata and policies areapplied while
+                  working on the Enterprise Content Management team
+                </List.Item>
+              </List>
+              <Badges
+                badges={[
+                  java,
+                  javascript,
+                  gcp,
+                  kubernetes,
+                  gitlab,
+                  docusign,
+                  box,
+                  jira,
+                ]}
+              />
+              <Text size="xs" mt={4}>
+                June 2020 - December 2020
+              </Text>
+            </Timeline.Item>
 
-          {Projects.map((p, i) => (
-            <Grid.Col span={3} key={i}>
+            <Timeline.Item
+              bullet={<div>ATB</div>}
+              title={<Text size="lg">ATB Financial</Text>}
+            >
+              <Text color="dimmed" size="md">
+                Full Stack Developer
+              </Text>
+              <List size="sm">
+                <List.Item>
+                  Mentored a team of 10 people using agile practices to solve
+                  a business case problem
+                </List.Item>
+                <List.Item>
+                  Migrated microservices from IBM Bluemix to Google Cloud
+                  Platform
+                </List.Item>
+                <List.Item>
+                  Worked on the frontend and backend for ATB’s new online
+                  banking website for business customers
+                </List.Item>
+              </List>
+              <Badges
+                badges={[
+                  react,
+                  redux,
+                  express,
+                  gcp,
+                  docker,
+                  kubernetes,
+                  jenkins,
+                  java,
+                  python,
+                  jira
+                ]} />
+              <Text size="xs" mt={4}>
+                January 2019 - August 2019
+              </Text>
+            </Timeline.Item>
 
-              <Card shadow="sm" p="lg">
-                <Card.Section>
-                  <Image src={p.previewimage} height={160} alt="Norway" />
-                </Card.Section>
+            <Timeline.Item
+              bullet={<div>ATB</div>}
+              title={<Text size="lg">ATB Financial</Text>}
+            //lineVariant="dashed"
+            >
+              <Text color="dimmed" size="md">
+                ATB 101 Developer
+              </Text>
+              <List size="sm">
+                <List.Item>
+                  Winning team for the ”Capstone Project”. It is a case
+                  competition-like format, but lasts 4 months and eachteam of
+                  10 tackled different problems. More info :
+                  https://www.atb.com/company/careers/atb-101/
+                </List.Item>
+                <List.Item>
+                  Worked on UI and backend for ATB’s new online banking
+                  website for business customers
+                </List.Item>
+              </List>
+              <Badges
+                badges={[
+                  react,
+                  redux,
+                  express,
+                  docker,
+                  jira,
+                  bluemix
+                ]} />
+              <Text size="xs" mt={4}>
+                May 2018 - August 2018
+              </Text>
+            </Timeline.Item>
+          </Timeline>
+          {/* </Container> */}
+        </section>
+        <Divider my="sm" />
+        <section id="sec-3">
+          {/* <Container> */}
 
-                <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
-                  <Text weight={500}>{p.title}</Text>
-                  {p.wip && <Badge color="pink" variant="light">
-                    Work in progress
-                  </Badge>}
-                </Group>
+          <Title order={1}>Projects</Title>
 
-                <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
-                  {p.description}
-                </Text>
+          <Grid>
 
-                {p.demourl && <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }} href={p.demourl} component="a" target="_blank">
-                  Demo
-                </Button>}
-                {p.githuburl && <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }} href={p.githuburl} component="a" target="_blank">
-                  Github
-                </Button>}
-              </Card>
-            </Grid.Col>
-          ))}
-        </  Grid>
-      </section>
+            {Projects.map((p, i) => (
+              <Grid.Col span={3} key={i}>
+
+                <Card shadow="sm" p="lg">
+                  <Card.Section>
+                    <Image src={p.previewimage} height={160} alt="Norway" />
+                  </Card.Section>
+
+                  <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
+                    <Text weight={500}>{p.title}</Text>
+                    {p.wip && <Badge color="pink" variant="light">
+                      Work in progress
+                    </Badge>}
+                  </Group>
+
+                  <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
+                    {p.description}
+                  </Text>
+
+                  {p.demourl && <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }} href={p.demourl} component="a" target="_blank">
+                    Demo
+                  </Button>}
+                  {p.githuburl && <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }} href={p.githuburl} component="a" target="_blank">
+                    Github
+                  </Button>}
+                </Card>
+              </Grid.Col>
+            ))}
+          </  Grid>
+          {/* </Container> */}
+        </section>
+      </Container>
     </AppShell>
   </>
   );
