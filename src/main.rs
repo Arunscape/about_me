@@ -12,7 +12,7 @@ fn app() -> Html {
                 <img src="https://avatars.githubusercontent.com/u/8227297"/>
                 <p>{"Arun Woosaree E.I.T."}</p>
                 <p>{"Bsc. Computer Engineering Software Co-op at the University of Alberta"}</p>
-                <pre><code class="language-javascript">
+                <pre><code class="javascript">
                 { code }
                 </code></pre>
             </div>
@@ -21,5 +21,5 @@ fn app() -> Html {
 }
 
 fn main() {
-    yew::start_app::<App>();
+    yew::Renderer::<App>::new().render();
 }

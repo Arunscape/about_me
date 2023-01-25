@@ -1,4 +1,15 @@
-.grid {
-  display: grid;
-  place-items: center;
+body {
+	background-color: red;
+}
+
+@media (prefers-color-scheme: light) {
+	body {
+		background-color: green;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: blue;
+	}
 }
