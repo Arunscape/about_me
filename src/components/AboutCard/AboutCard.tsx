@@ -23,7 +23,7 @@ import Refresh from 'mdi-material-ui/Refresh'
 import { openNewTab } from '../../util'
 
 const GITHUB_AVATAR = "https://avatars0.githubusercontent.com/u/8227297"
-const JOKE_API = "https://jokeapi.arunw.workers.dev"
+const JOKE_API = "https://jokeapi.arun.gg"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
