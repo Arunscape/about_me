@@ -1,0 +1,21 @@
+
+html {
+  background: black;
+  color: white;
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background: white;
+    color: black;
+  }
+}
+
+@font-face {
+  font-family: 'Monocraft';
+  src: url('Monocraft.woff2');
+}
+
+* {
+  font-family: 'Monocraft' !important;
+}
