@@ -1,21 +1,15 @@
-
-html {
-  background: black;
-  color: white;
-}
-
-@media (prefers-color-scheme: light) {
-  html {
-    background: white;
-    color: black;
-  }
-}
+//body {
+//  @apply mocha bg-base;
+//}
+//
+//
+//@media (prefers-color-scheme: light) {
+//  body {
+//    @apply frappe;
+//  }
+//}
 
 @font-face {
   font-family: 'Monocraft';
-  src: url('Monocraft.woff2');
-}
-
-* {
-  font-family: 'Monocraft' !important;
+  src: url('fonts/Monocraft/Monocraft.woff2');
 }

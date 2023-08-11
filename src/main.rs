@@ -24,26 +24,35 @@ fn App(cx: Scope) -> impl IntoView {
         </Router>
     }
 }
-
 #[component]
 fn Navbar(cx: Scope) -> impl IntoView {
     view! { cx,
         <nav>
-            <div class="flex flex-row">
+            <div class="flex flex-row space-x-4">
                 <div class="hover:underline">
-                    <a href="/">Home</a>
+                    <a href="/">
+                        Home
+                    </a>
                 </div>
                 <div class="hover:underline">
-                    <a href="/projects">Projects</a>
+                    <a href="/projects">
+                        Projects
+                    </a>
                 </div>
                 <div class="hover:underline">
-                    <a href="/resume">Resume</a>
+                    <a href="/resume">
+                        Resume
+                    </a>
                 </div>
                 <div class="hover:underline">
-                    <a href="/blog">Blog</a>
+                    <a href="/blog">
+                        Blog
+                    </a>
                 </div>
                 <div class="hover:underline">
-                    <a href="/contact">Contact</a>
+                    <a href="/contact">
+                        Contact
+                    </a>
                 </div>
             </div>
         </nav>
@@ -53,16 +62,18 @@ fn Navbar(cx: Scope) -> impl IntoView {
 #[component]
 fn Home(cx: Scope) -> impl IntoView {
     view! { cx,
-        <h1>
-            Hello, my name is Arun
-        </h1>
+        <>
+            <h1 class="text-green-800 dark:text-green-100">
+                Hello, my name is Arun
+            </h1>
+        </>
     }
 }
 
 #[component]
 fn Projects(cx: Scope) -> impl IntoView {
     view! { cx,
-        <h1>
+        <h1 class="text-white">
             Projects
         </h1>
     }
