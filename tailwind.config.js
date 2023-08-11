@@ -10,7 +10,7 @@ module.exports = {
   },
   safelist: [
 		{
-			pattern: /text-.+/
+			pattern: /(bg|text)-.+/
 		},
 		'mocha',
 		'macchiato',

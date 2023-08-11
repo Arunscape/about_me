@@ -73,7 +73,7 @@ fn Home(cx: Scope) -> impl IntoView {
 #[component]
 fn Projects(cx: Scope) -> impl IntoView {
     view! { cx,
-        <h1 class="text-white">
+        <h1>
             Projects
         </h1>
     }
@@ -100,9 +100,14 @@ fn Blog(cx: Scope) -> impl IntoView {
 #[component]
 fn Contact(cx: Scope) -> impl IntoView {
     view! { cx,
-        <h1>
-            Contact
-        </h1>
+        <>
+            <h1>
+                Contact Me
+            </h1>
+            <div>
+                Email: arun@arun.gg
+            </div>
+        </>
     }
 }
 
