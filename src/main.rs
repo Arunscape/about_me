@@ -1,5 +1,8 @@
 use leptos::*;
 use leptos_router::*;
+mod blog;
+mod markdown;
+use crate::blog::Blog;
 
 fn main() {
     leptos::mount_to_body(|cx| view! { cx, <App/> })
@@ -84,15 +87,6 @@ fn Resume(cx: Scope) -> impl IntoView {
     view! { cx,
         <h1>
             Resume
-        </h1>
-    }
-}
-
-#[component]
-fn Blog(cx: Scope) -> impl IntoView {
-    view! { cx,
-        <h1>
-            Blog
         </h1>
     }
 }

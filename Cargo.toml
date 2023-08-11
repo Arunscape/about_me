@@ -18,3 +18,6 @@ codegen-units = 1
 [package.metadata.leptos]
 lib-profile-release = "wasm-release"
 
+
+[build-dependencies]
+femark = "0.1.4"
