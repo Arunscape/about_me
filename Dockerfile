@@ -1,4 +1,4 @@
-FROM rust:slim as builder
+FROM docker.io/rustlang/rust:nightly-slim as builder
 WORKDIR /app
 #RUN apk add libc-dev npm
 RUN apt-get update && apt-get install -y npm
