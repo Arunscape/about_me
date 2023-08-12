@@ -1,5 +1,6 @@
 use leptos::*;
 use leptos_router::*;
+use leptos_meta::*;
 mod blog;
 mod markdown;
 use crate::blog::Blog;
@@ -13,6 +14,7 @@ fn App(cx: Scope) -> impl IntoView {
     let (count, set_count) = create_signal(cx, 0);
 
     view! { cx,
+        <Html attributes=AdditionalAttributes::from(vec![("data-theme", "catppuccin-mocha")])/>
         <Router>
             <Navbar/>
             <main>
@@ -29,34 +31,28 @@ fn App(cx: Scope) -> impl IntoView {
 }
 #[component]
 fn Navbar(cx: Scope) -> impl IntoView {
+
+    let paths = move || { vec![
+        ("Home", "/"),
+        ("Projects", "/projects"),
+        ("Resume", "/resume"),
+        ("Blog", "/blog"),
+        ("Contact", "/contact"),
+    ]};
     view! { cx,
         <nav>
             <div class="flex flex-row space-x-4">
-                <div class="hover:underline">
-                    <a href="/">
-                        Home
-                    </a>
-                </div>
-                <div class="hover:underline">
-                    <a href="/projects">
-                        Projects
-                    </a>
-                </div>
-                <div class="hover:underline">
-                    <a href="/resume">
-                        Resume
-                    </a>
-                </div>
-                <div class="hover:underline">
-                    <a href="/blog">
-                        Blog
-                    </a>
-                </div>
-                <div class="hover:underline">
-                    <a href="/contact">
-                        Contact
-                    </a>
-                </div>
+                <For
+                    each=paths
+                    key=|(l, p)| *p
+                    view=move |cx, (l, p)| {
+                        view! { cx,
+                            <div class="btn btn-hover">
+                                <a href=p>{l}</a>
+                            </div>
+                        }
+                    }
+                />
             </div>
         </nav>
     }

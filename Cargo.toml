@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 leptos = { version = "0.4", features = ["csr", "nightly"] }
 leptos_router = { version = "0.4", features = ["csr", "nightly"] }
+leptos_meta = { version = "0.4", features = ["csr", "nightly"] }
 
 [profile.wasm-release]
 inherits = "release"

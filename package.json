@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@catppuccin/tailwindcss": "^0.1.6"
+    "daisyui": "^3.5.1"
   }
 }
