@@ -8,15 +8,15 @@ module.exports = {
   theme: {
       extend: {},
   },
-  safelist: [
-		{
-			pattern: /(bg|text)-.+/
-		},
-		'mocha',
-		'macchiato',
-		'frappe',
-		'latte'
-	],
+  //safelist: [
+	//	{
+	//		pattern: /(bg|text)-.+/
+	//	},
+	//	'mocha',
+	//	'macchiato',
+	//	'frappe',
+	//	'latte'
+	//],
   plugins: [
     require("@catppuccin/tailwindcss")({
       // prefix to use, e.g. `text-pink` becomes `text-ctp-pink`.

@@ -20,4 +20,4 @@ lib-profile-release = "wasm-release"
 
 
 [build-dependencies]
-femark = "0.1.4"
+pulldown-cmark = { version = "0.9.2", default-features = false, features = ["simd"] }
