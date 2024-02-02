@@ -1,0 +1,1 @@
+This site was generated from markdown files using [quartz](https://github.com/jackyzha0/quartz?tab=readme-ov-file)
